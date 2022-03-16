@@ -1,0 +1,56 @@
+{% extends 'base.html' %} {% load bootstrap4 %} {% block content %}
+<div style=padding-top:120px;></div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            <div class="card">
+                <h2 style="text-align:center"><u>  {{user.username}}'s Profile </u> </h2>
+                {% if user.Profile.profile_pic %}
+                <img src=" {{user.Profile.profile_pic}} " alt="Profile picture"> {% else %}
+                <img src="https://c4.wallpaperflare.com/wallpaper/736/96/920/beautiful-unicorn-in-forest-fantasy-computer-desktop-wallpapers-hd-2560%C3%971600-wallpaper-preview.jpg" style="border-radius: 50%; margin-left: 30%;" class="img-fluid" width="250px" height="250px"
+                    alt="dp"> {% endif %}
+                <div class="card-body">
+                    <h4 class="card-title">
+                        <h3 style="text-align: center;">Username: {{user.username}} </h3>
+                    </h4>
+                    <p class="card-text">{% if user.profile.bio %}
+                        <h5 style="text-align: center;"><b>Bio:</b> {{user.profile.bio}}</h5>
+                        {% else %}
+                        <p style="text-align: center;">You have no bio yet</p>
+
+                        {% endif %}</p>
+                    <a href="/editprofile" class="btn btn-primary" style="margin-left: 40%;">Update Profile</a>
+
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+    <div class="row">
+
+        <h2 style="text-align:center">My Projects</h2>
+        {% for project in all_projects %}
+        <div class="card" style="width:2500px">
+            <h4 style="text-align: center;" class="card-title pictitle"> {{project.title}} </h4>
+            <a href="/singleproject/{{project.id}}">
+                <img class="card-img-top img-fluid" width="800px" src=" {{project.image.url}}" alt="{{post.name}}"></a>
+            <div class="card-body">
+                <h4 class="card-title"> {{project.description}}</h4>
+                <a href=" {{project.link}} "> {{project.link}} </a>
+                <p class="card-text"><b>Posted by:</b> {{project.user}} </p>
+
+                <a href="{%url 'comment' project.id%}" class="btn btn-primary">Review</a>
+
+            </div>
+        </div>
+        {% endfor %}
+
+    </div>
+
+</div>
+
+{% endblock %}
+<style>
+
+</style>

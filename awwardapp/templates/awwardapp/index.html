@@ -1,0 +1,68 @@
+{% extends 'awwardapp/base.html' %}
+{%block content%}
+
+  <div style=padding-top:120px;></div>
+  <div style="padding-bottom: 30px;"></div>
+  <div id="myCarousel" class="carousel slide" data-ride="carousel">
+   
+   
+          <div class="item">
+              <img src="https://images.unsplash.com/photo-1514820720301-4c4790309f46?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1032&q=80" class="d-block w-100" alt="Chicago" height="50vh" style="width:100%; height: 70vh;">
+              <div class="carousel-caption" style="align-content: center;">
+               </div>
+          </div>
+  
+    </div>
+  
+  <h2 class="text-center supreme" style="font-family: 'Courgette', cursive;">View the best projects</h2>
+  <div class="container-fluid">
+      <div class="row roww">
+          {% for project in all_projects %}
+          <div class="card col-md-6" style="margin-bottom: 50px; padding-left: 100px;">
+              <h1 style="text-align: center; text-transform:uppercase;" class="card-title pictitle" style="width: 500px;"> {{project.title}} </h1>
+              <a href="/singleproject/{{project.id}}">
+                  <img class="card-img-top img-fluid" style="width:600px;" src=" {{project.image.url}}" alt="{{post.name}}"></a>
+              <div class="card-body" style="text-align: center;">
+                  <h4 class="card-title"> {{project.description}}</h4>
+                  <a style="text-align: center;" href=" {{project.link}} "> {{project.link}} </a>
+                  <p class="card-text" style="align-content: center;"><b>Posted by:</b> {{project.user}} </p>  
+              </div>
+          </div>
+  
+          {% empty %}
+  
+          <h2>No projects at the moment</h2>
+          {% endfor %}
+      </div>
+  </div>
+  
+  
+  <style>
+      .roww {
+          margin: 5px;
+      }
+      
+      .card {
+          border: white;
+          background-color: transparent;
+      }
+      
+      .carousel-caption {
+          font-family: 'Courgette', cursive;
+      }
+      
+      .supreme {
+          padding-top: 30px;
+          padding-bottom: 30px;
+          box-shadow: 3px 3px 3px turquoise;
+          width: 20%;
+          margin-left: 40%;
+      }
+      
+      @media only screen and (max-width: 1000px) {
+          .supreme {
+              box-shadow: 3px 3px 3px transparent;
+          }
+      }
+  </style>
+{%endblock%}

@@ -1,0 +1,36 @@
+{% block content %}
+<div style=padding-top:120px;></div>
+<div id="projo-body" style="overflow-x: hidden;">
+    <div class="row ">
+        <div class="col-md-1"></div>
+        <div class="col-md-4">
+            <img class="img-fluid" src="" alt="pic">
+        </div>
+
+        <div class="col-md-4">
+            <div class="card bg-transparent">
+                <div class="card-header">
+                    <h3><b><u>Post on your timeline</u></b></h3>
+                </div>
+                <div class="card-body">
+                    <form action="{% url 'newproject' %}" method="post" enctype="multipart/form-data">
+                        {% csrf_token %}  
+                        {{form.as_p}}
+                        <button type="submit" class="btn btn-success" style="margin-left: 10%;">Upload</button>
+
+                    </form>
+                    <script>
+                        var name =  "{{ user.id }}";
+                        document.getElementById("elder").value = name;
+                    </script>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-1"></div>
+
+    </div>
+
+
+</div>
+
+{% endblock%}
