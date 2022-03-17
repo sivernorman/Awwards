@@ -28,9 +28,7 @@ You need the following to work on the project:
 
 -Python version 3.8 -Django 2.0 -Pip -virtualenv -A text Editor
 
-Link to live Website
-Awards
-
+ 
 Technologies Used
 Django
 Html/css
